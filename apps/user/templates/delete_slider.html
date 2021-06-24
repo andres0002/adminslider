@@ -1,0 +1,27 @@
+{% extends 'base_crud_slider.html' %}
+
+{% block title_form_slider %}
+    <i class="fa fa-eraser page-header-icon"></i>&nbsp;Borrar Slider
+{% endblock %}
+
+{% block button_action_slider %}
+    <button type="submit" class="btn btn-primary">
+        <span class="btn-label icon fa fa-eraser"></span>
+        Borrar
+    </button>
+{% endblock %}
+
+{% block scripts_crud %}
+    <script>
+        $('#form_user').find("input[type='text'], input[type='number'], input[type='file'], select, textarea").each(function (index, element)
+        {
+            $(element).prop('readonly', true);
+            $(element).prop('disabled', true);
+        });
+
+        $('#form_user').find("select").each(function (index, element)
+        {
+            $(element).attr('style', 'pointer-events: none;');
+        });
+    </script>
+{% endblock %}

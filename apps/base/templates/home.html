@@ -1,0 +1,20 @@
+{% extends 'base_home.html' %}
+{% block content %}
+    {% include 'alerts.html' %}
+    <!-- Carousel Section start -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            {% for slider in sliders %}
+                <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+                    <img src="{{slider.image.url}}" style="height: 100%; width: 100%;" class="img-fluid d-block w-100" atl="...">              
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Carousel Section end -->
+{% endblock %}
