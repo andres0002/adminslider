@@ -100,8 +100,8 @@ class AddUser(View):
         email = request.POST.get('email', None)
         password = request.POST.get('password', None)
         confirm_password = request.POST.get('confirm_password', None)
-        name = request.POST.get('nombre', None)
-        last_name = request.POST.get('apellido', None)
+        name = request.POST.get('name', None)
+        last_name = request.POST.get('last_name', None)
         rol = request.POST.get('rol', None)
 
         if password == confirm_password:

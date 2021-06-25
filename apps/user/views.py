@@ -2,9 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.views.generic.base import View
 from django.shortcuts import render, redirect
-from apps.user.models import User
 from apps.base.models import Slider
-from apps.user.forms import UserForm
 from apps.base.forms import SliderForm
 
 # Create your views here.
