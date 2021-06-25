@@ -31,7 +31,7 @@
             <div class="profile-content">
                 <div class="panel">
                     <br><br>
-                    <form method="post" id="form_usuario" enctype="multipart/form-data">
+                    <form method="post" id="form_user" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.non_field_errors }}
                         {% include 'form_user.html' %}
