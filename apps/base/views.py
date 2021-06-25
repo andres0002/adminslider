@@ -130,5 +130,5 @@ class AddUser(View):
 
         else:
             messages.add_message(request, messages.ERROR, "Verifique las contraseña")
-
-        return render(request, self.template_name)
+        form = self.form_class(request.POST)
+        return render(request, self.template_name, {'form': form})
