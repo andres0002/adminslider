@@ -33,7 +33,9 @@ BASE_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_APPS = []
+THIRD_APPS = [
+    'import_export',
+]
 
 LOCAL_APPS = [
     'apps.base',

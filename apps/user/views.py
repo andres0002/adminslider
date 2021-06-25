@@ -14,7 +14,7 @@ class ListSlider(LoginRequiredMixin, View):
     template_name = 'list_slider.html'
     form_class = SliderForm
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         '''
         Esta funcion se encarga de mostrar la plantilla de listar Sliders.
         :param request: Objeto que contiene todos los parametros enviados por la peticion del cliente al servidor.
@@ -28,7 +28,7 @@ class AddSlider(LoginRequiredMixin, View):
     template_name = 'add_slider.html'
     form_class = SliderForm
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         '''
         Esta funcion se encarga de mostrar la plantilla de adicionar slider y su respectivo formulario.
         :param request: Objeto que contiene todos los parametros enviados por la peticion del cliente al servidor.
@@ -37,7 +37,7 @@ class AddSlider(LoginRequiredMixin, View):
         form = self.form_class()
         return render(request, self.template_name, {'form': form})
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         '''
         Esta funcion se encarga de verificar si el slider se adiciono correctamente o de lo contrario si se precento algun inconveniente o error.
         :param request: Objeto que contiene todos los parametros enviados por la peticion del cliente al servidor.
@@ -100,12 +100,12 @@ class UpdateSlider(LoginRequiredMixin, View):
         :return: Nos retorna la lista de todas los slider registrados en el sistema.
         '''
         slider = Slider.objects.get(id=id)
-        form = self.form_class(request.POST, instance=slider)
+        form = self.form_class(data=request.POST, instance=slider)
 
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.INFO, 'El slider se modificó correctamente')
-            return redirect("admin:list_sliders")
+            return redirect("admin_slider:list_sliders")
 
         else:
             messages.add_message(request, messages.ERROR, 'El slider no se pudo modificar')
@@ -148,7 +148,7 @@ class DeleteSlider(LoginRequiredMixin, View):
 class Home(LoginRequiredMixin, View):
     '''Esta clase se encarga de mostrar la plantilla de inicio o landing page.'''
     template_name = 'home/home.html'
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         '''
                     Esta funcion se encarga de mostrar la plantilla de inicio o landing page.
                     :param request: Objeto que contiene todos los parametros enviados por la peticion del cliente al servidor.

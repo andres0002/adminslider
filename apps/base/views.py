@@ -12,7 +12,7 @@ from apps.base.forms import AddUserForm
 class Login(View):
     template_name = 'login.html'
     '''Esta clase se encarga del logeo del usuario, de verificar que el usuario y la contraseña sean correctas.'''
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         '''
         Esta funcion se encarga de mostrar la plantilla del login.
         :param request: Objeto que contiene todos los parametros enviados por la peticion del cliente al servidor.
@@ -20,7 +20,7 @@ class Login(View):
         '''
         return render(request, self.template_name)
 
-    def post(self, request, *args, **kargs):
+    def post(self, request):
         '''
         Esta funcion se encarga de verificar que el usuario y la contraseña sean correctas.
         :param request: Objeto que contiene todos los parametros enviados por la peticion del cliente al servidor.
@@ -53,7 +53,7 @@ class Login(View):
 
 class Logout(View):
     '''Esta clase se encarga de mostrar el login.'''
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         '''
         Esta clase se encarga de mostrar la plantilla login.
         :param request: Objeto que contiene todos los parametros enviados por la peticion del cliente al servidor.
@@ -66,7 +66,7 @@ class Home(View):
     '''Esta clase se encarga de mostrar la plantilla de inicio o landing page sin logeo.'''
     template_name = 'home.html'
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         '''
                     Esta funcion se encarga de mostrar todos los sliders.
                     :param request: Objeto que contiene todos los parametros enviados por la peticion del cliente al servidor.
@@ -80,7 +80,7 @@ class AddUser(View):
     template_name = 'add_user.html'
     form_class = AddUserForm
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         '''
         Esta funcion se encarga de mostrarnos la plantilla de adicionar usuario y su respectivo formulario.
         :param request: Objeto que contiene todos los parametros enviados por la peticion del cliente al servidor.
@@ -89,7 +89,7 @@ class AddUser(View):
         form = self.form_class()
         return render(request, self.template_name, {'form': form})
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         '''
         Esta funcion se encarga de verificar que el usuario se agrego correctamente o de lo contrario si se precento
         algun inconveniente o error.
@@ -98,12 +98,10 @@ class AddUser(View):
         '''
         username = request.POST.get('username', None)
         email = request.POST.get('email', None)
-        email1 = request.POST.get('email1', None)
         password = request.POST.get('password', None)
         confirm_password = request.POST.get('confirm_password', None)
         name = request.POST.get('nombre', None)
         last_name = request.POST.get('apellido', None)
-        # image = request.FILES('imagen', None)
         rol = request.POST.get('rol', None)
 
         if password == confirm_password:
@@ -119,7 +117,6 @@ class AddUser(View):
                     cliente = Usuario(
                                         name=name,
                                         last_name=last_name,
-                                        # image=image,
                                         rol=rol,
                                         usuid=user)
                     cliente.save()

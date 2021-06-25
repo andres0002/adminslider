@@ -29,12 +29,10 @@ class AddUserForm(forms.Form):
     '''Esta clase se encarga de definir la estructura del formulario de datos del usuario.'''
     username = forms.CharField(max_length=150, label='Username')
     email = forms.EmailField(max_length=150, label='Email')
-    email1 = forms.EmailField(max_length=150, label='Confirme Email')
     password = forms.CharField(max_length=128, label='Contraseña', widget=forms.PasswordInput())
     confirm_password = forms.CharField(max_length=128, label='Confirmar Contraseña', widget=forms.PasswordInput())
     name = forms.CharField(max_length=30, label='Nombre')
     last_name = forms.CharField(max_length=30, label='Apellido')
-    # image = forms.ImageField()
     rol = forms.ChoiceField(choices=ROL_CHOICES, label='Tipo de Ususario', widget=forms.Select())
 
     def __init__(self, *args, **kwargs):

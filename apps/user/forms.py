@@ -7,16 +7,12 @@ class UserForm(forms.Form):
         fields = (
             "name",
             "last_name",
-            "email",
-            "image",
             "usuid",
             "rol"
         )
         labels = {
             'name': 'Nombre',
             'last_name': 'Apellido',
-            'email': 'E-mail',
-            'image': 'Foto usuario o Logotipo',
             'usuid': 'Username',
             'rol': 'Tipo de usuario'
         }
