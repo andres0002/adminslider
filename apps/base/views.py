@@ -114,7 +114,7 @@ class AddUser(View):
                 if created:
                     user.set_password(password)
                     user.save()
-                    cliente = Usuario(
+                    cliente = User(
                                         name=name,
                                         last_name=last_name,
                                         rol=rol,

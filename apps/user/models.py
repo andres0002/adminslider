@@ -13,8 +13,8 @@ class User(models.Model):
     '''
     name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    usuid = models.OneToOneField(User, on_delete=models.CASCADE)
     rol = models.CharField(max_length=20, choices=ROL_CHOICES)
+    usuid = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):  # __unicode__
         return self.name

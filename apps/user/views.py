@@ -71,7 +71,7 @@ class VisualizeSlider(LoginRequiredMixin, View):
         :return: Nos retorna la plantilla visualizar slider y  su respectivo formulario.
         '''
         slider = Slider.objects.get(id=id)
-        form = self.form_class(instance=slider)
+        form = self.form_class(request.POST, instance=slider)
         return render(request, self.template_name, {'form': form})
 
 class UpdateSlider(LoginRequiredMixin, View):
