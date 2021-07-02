@@ -19,22 +19,15 @@
         </span>
     </div>
     <div class="profile-row">
-        <div class="left-col">
-            <div class="profile-block">
-                <div class="panel profile-photo">
-                    <img src="">
-                </div>
-            </div>
-        </div>
         <div class="right-col">
             <hr class="profile-content-hr no-grid-gutter-h">
             <div class="profile-content">
                 <div class="panel">
                     <br><br>
-                    <form method="post" id="form_user" enctype="multipart/form-data">
+                    <form method="post" id="form" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.non_field_errors }}
-                        {% include 'form_user.html' %}
+                        {% include 'form.html' %}
                         <br>
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
@@ -57,7 +50,7 @@
         init.push(function ()
         {
             $('body').addClass("page-profile");
-            $('#item_usuario').addClass("active");
+            $('#item_slider').addClass("active");
         });
 
         window.PixelAdmin.start(init);

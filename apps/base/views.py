@@ -96,39 +96,41 @@ class AddUser(View):
         :param request: Objeto que contiene todos los parametros enviados por la peticion del cliente al servidor.
         :return: Nos retorna a la plantilla adicionar usuario.
         '''
-        username = request.POST.get('username', None)
-        email = request.POST.get('email', None)
-        password = request.POST.get('password', None)
-        confirm_password = request.POST.get('confirm_password', None)
-        name = request.POST.get('name', None)
-        last_name = request.POST.get('last_name', None)
-        rol = request.POST.get('rol', None)
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            username = request.POST.get('username', None)
+            email = request.POST.get('email', None)
+            password = request.POST.get('password', None)
+            confirm_password = request.POST.get('confirm_password', None)
+            name = request.POST.get('name', None)
+            last_name = request.POST.get('last_name', None)
+            rol = request.POST.get('rol', None)
 
-        if password == confirm_password:
-            if username and email and password and confirm_password:
-                user, created = User.objects.get_or_create(username=username,
-                                                            email=email,
-                                                            first_name=name,
-                                                            last_name=last_name)
+            if password == confirm_password:
+                if username and email and password and confirm_password:
+                    user, created = User.objects.get_or_create(username=username,
+                                                                email=email,
+                                                                first_name=name,
+                                                                last_name=last_name)
 
-                if created:
-                    user.set_password(password)
-                    user.save()
-                    cliente = User(
+                    if created:
+                        user.set_password(password)
+                        user.save()
+                        cliente = User(
                                         name=name,
                                         last_name=last_name,
                                         rol=rol,
                                         usuid=user)
-                    cliente.save()
-                    messages.add_message(request, messages.INFO, "El usuario se agrego satisfactoriamente")
+                        cliente.save()
+                        messages.add_message(request, messages.INFO, "El usuario se agrego satisfactoriamente")
+                        return redirect('login')
+
+                    else:
+                        messages.add_message(request, messages.ERROR, "El usuario ya existe en el sistema")
 
                 else:
-                    messages.add_message(request, messages.ERROR, "El usuario ya existe en el sistema")
+                    messages.add_message(request, messages.ERROR, "Faltan campos por llenar en el formulario")
 
             else:
-                messages.add_message(request, messages.ERROR, "Faltan campos por llenar en el formulario")
-
-        else:
-            messages.add_message(request, messages.ERROR, "Verifique las contraseña")
-        form = self.form_class(request.POST)
+                messages.add_message(request, messages.ERROR, "Verifique las contraseña")
         return render(request, self.template_name, {'form': form})

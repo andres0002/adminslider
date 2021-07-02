@@ -4,18 +4,15 @@
     <i class="fa fa-eye page-header-icon"></i>&nbsp;Visualizar Slider
 {% endblock %}
 
-{% block button_action_slider %}
-{% endblock %}
-
 {% block scripts_crud %}
     <script>
-        $('#form_user').find("input[type='text'], input[type='number'], input[type='file'], select, textarea").each(function (index, element)
+        $('#form').find("input[type='text'], input[type='number'], input[type='file'], select, textarea").each(function (index, element)
         {
             $(element).prop('readonly', true);
             $(element).prop('disabled', true);
         });
 
-        $('#form_user').find("select").each(function (index, element)
+        $('#form').find("select").each(function (index, element)
         {
             $(element).attr('style', 'pointer-events: none;');
         });
