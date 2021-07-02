@@ -20,5 +20,5 @@ class UserApp(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "User"
-        verbose_name_plural = "Users"
+        verbose_name = "UserApp"
+        verbose_name_plural = "UsersApp"

@@ -10,7 +10,7 @@ class UserResource(resources.ModelResource):
 		model = UserApp
 
 class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-	search_fields = ("last_name", "usuid", "rol")
+	search_fields = ("name", "last_name", "usuid", "rol")
 	list_display = ("name", "last_name", "usuid", "rol")
 	list_filter = ("usuid", "rol")
 	resource_class = UserResource
