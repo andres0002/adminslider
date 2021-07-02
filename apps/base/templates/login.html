@@ -58,7 +58,7 @@
 			<a href="" class="logo">
                 <div style="text-align: center;">
                     <h2>AdminSlider</h2>
-				    <img src="{% static 'demo/ORIGINAL.png' %}" alt="" style="margin-top: -5px; width: 200px; height: 140px;">
+				    <img src="{% static 'demo/logo.png' %}" alt="" style="margin-top: -5px; width: 200px; height: 140px;">
                 </div>
 			</a> <!-- / .logo -->
 			<!-- / Info list -->
@@ -96,9 +96,11 @@
 
                 <div class="form-actions">
 					<input type="submit" value="Ingresar" class="signin-btn bg-primary">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'home' %}" class="signin-btn bg-primary">
-                        Regresar
-                    </a>
+					<button type="button" class="signin-btn bg-primary">
+						<a href="{% url 'home' %}">
+							Regresar
+						</a>
+					</button>
 				</div> <!-- / .form-actions -->
                 <!-- / .form-actions -->
 			</form>

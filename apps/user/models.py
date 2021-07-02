@@ -7,7 +7,7 @@ ROL_CHOICES = (
     ('AMD', u'Administrador'),
 )
 
-class User(models.Model):
+class UserApp(models.Model):
     '''
     Esta clase se encarga de definir los actributos de la tabla Usuario de la base de datos ryvatec.
     '''

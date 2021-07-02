@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from django.contrib import auth
 from django.contrib import messages
-from apps.user.models import User
+from django.contrib.auth.models import User
+from apps.user.models import UserApp
 from apps.base.models import Slider
 from apps.base.forms import AddUserForm
 
@@ -33,9 +34,9 @@ class Login(View):
 
         if usuario != None and usuario.is_active:
             auth.login(request, usuario)
-            cliente = User.objects.filter(usuid=usuario.pk)
+            user = UserApp.objects.filter(usuid=usuario.pk)
 
-            if cliente[0].rol == "AMD":
+            if user[0].rol == "AMD":
                 return redirect('admin_slider:home')
 
             else:
@@ -116,14 +117,14 @@ class AddUser(View):
                     if created:
                         user.set_password(password)
                         user.save()
-                        cliente = User(
+                        user_app = UserApp(
                                         name=name,
                                         last_name=last_name,
                                         rol=rol,
                                         usuid=user)
-                        cliente.save()
+                        user_app.save()
                         messages.add_message(request, messages.INFO, "El usuario se agrego satisfactoriamente")
-                        return redirect('login')
+                        return redirect('home')
 
                     else:
                         messages.add_message(request, messages.ERROR, "El usuario ya existe en el sistema")

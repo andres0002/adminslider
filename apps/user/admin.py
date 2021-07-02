@@ -1,13 +1,13 @@
 from django.contrib import admin
 from import_export import resources
 from  import_export.admin import ImportExportModelAdmin
-from apps.user.models	import User
+from apps.user.models import UserApp
 
 # Register your models here.
 
 class UserResource(resources.ModelResource):
 	class Meta:
-		model = User
+		model = UserApp
 
 class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 	search_fields = ("last_name", "usuid", "rol")
@@ -15,4 +15,4 @@ class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 	list_filter = ("usuid", "rol")
 	resource_class = UserResource
 
-admin.site.register(User, UserAdmin)
+admin.site.register(UserApp, UserAdmin)
